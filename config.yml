@@ -1,0 +1,7 @@
+logging:
+  level: INFO
+  loggers:
+    com.dropwizard.examples: DEBUG
+template: Hello, %s!
+defaultName: dwz
+defaultNum: 1
