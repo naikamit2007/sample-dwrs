@@ -1,6 +1,11 @@
 sudo: required
 services:
     - docker
+language: java
+jdk: oraclejdk8
 
 before_install:
-    - docker build -t naikamit/dwz-ex -f Dockerfile
+    - docker build -t naikamit/dwz-ex -f Dockerfile .
+
+script:
+    - mvn test 
