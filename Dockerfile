@@ -8,6 +8,7 @@ WORKDIR /dwz-ex
 # the pom
 ADD pom.xml .
 ADD config.yml .
+ADD docker-compose.yml .
 RUN mvn package -DskipTests
 
 # Do the Maven build!
@@ -23,5 +24,8 @@ WORKDIR /dwz-ex
 # Copy the binary built in the 1st stage
 COPY --from=build /dwz-ex/target/dropwizard-examples-1.0-SNAPSHOT.jar ./
 COPY --from=build /dwz-ex/config.yml ./
+COPY --from=build /dwz-ex/docker-compose.yml ./
+
+EXPOSE 8080 8081
 
 CMD ["java", "-jar", "dropwizard-examples-1.0-SNAPSHOT.jar", "server", "config.yml"]
