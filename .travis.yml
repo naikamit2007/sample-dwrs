@@ -11,4 +11,4 @@ script:
 
 after_success:
     - echo "$DOCKER_PD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push naikamit/dwz-ex
+    - docker push naikamit2016/dwz-ex
