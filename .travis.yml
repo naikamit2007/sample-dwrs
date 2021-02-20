@@ -4,8 +4,8 @@ services:
 language: java
 
 script:
-    - docker build -t dwz-ex -f Dockerfile .
+    - docker build -t naikamit2016/naikamit -f Dockerfile .
 
 after_success:
     - echo "$DOCKER_PD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push dwz-ex
+    - docker push naikamit2016/naikamit
