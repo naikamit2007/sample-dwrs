@@ -3,12 +3,9 @@ services:
     - docker
 language: java
 
-before_install:
-    - docker build -t dwz-ex -f Dockerfile .
-
 script:
-    - mvn test 
+    - docker build -t dwz-ex -f Dockerfile .
 
 after_success:
     - echo "$DOCKER_PD" | docker login -u "$DOCKER_ID" --password-stdin
-    - docker push naikamit2016/naikamit:dwz-ex
+    - docker push dwz-ex
