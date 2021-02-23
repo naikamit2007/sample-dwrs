@@ -1,0 +1,7 @@
+version: '3'
+services:
+   dwz-ex:
+      image: naikamit2016/dwz-ex:latest 
+      ports:
+        - 8080:8080
+        - 8081:8081

@@ -41,7 +41,7 @@ public class DropwizardexamplesApplication extends Application<Dropwizardexample
 
     if (configuration.metricsEnabled()) {
 
-      final Graphite graphite = new Graphite(new InetSocketAddress("montior-test.mon-pub-subnet.mon-vcn.oraclevcn.com", 2003));
+      final Graphite graphite = new Graphite(new InetSocketAddress("montior-test.mon-pub-subnet.vcn.oraclevcn.com", 2003));
 
       final GraphiteReporter reporter = GraphiteReporter.forRegistry(environment.metrics()).prefixedWith("prefix")
           .convertRatesTo(TimeUnit.SECONDS).convertDurationsTo(TimeUnit.MILLISECONDS).filter(MetricFilter.ALL)
