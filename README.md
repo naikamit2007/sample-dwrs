@@ -1,7 +1,7 @@
 ### Deployment Architecture
 ![Application architecture](arch.JPG)
 
-### Teck-stack
+### Tech-stack
 1. Terraform for OCI infrastructure provisioning
 2. Ansible for application deployment
 3. Dropwizard for microservice framework
