@@ -9,6 +9,8 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.QueryParam;
 import javax.ws.rs.core.MediaType;
 
+import com.codahale.metrics.Meter;
+import com.codahale.metrics.MetricRegistry;
 import com.codahale.metrics.annotation.Timed;
 import com.dropwizard.examples.api.Fibonacci;
 import com.dropwizard.examples.api.Saying;
@@ -23,13 +25,15 @@ public class HelloWorldResource {
   private final Integer defaultNum;
   private final AtomicLong counter;
   private final FibonacciService fibonacciService;
+  private final Meter computationReturnsFalse;
 
-  public HelloWorldResource(String template, String defaultName, Integer defaultNum, FibonacciService fibonacciService) {
+  public HelloWorldResource(String template, String defaultName, Integer defaultNum, FibonacciService fibonacciService, final MetricRegistry mr) {
     this.template = template;
     this.defaultName = defaultName;
     this.defaultNum = defaultNum;
     this.counter = new AtomicLong();
     this.fibonacciService = new FibonacciService();
+    this.computationReturnsFalse = mr.meter("computation-returns-false");
   }
 
   @GET
@@ -45,6 +49,7 @@ public class HelloWorldResource {
   public Fibonacci getFib(@QueryParam("number") Optional<Integer> num) {
     final int number = num.orElse(defaultNum);
     Fibonacci fibonacci = fibonacciService.getFibonacciObject(number);
+    computationReturnsFalse.mark();
     return fibonacci;
   }
 }

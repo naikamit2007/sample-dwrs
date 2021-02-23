@@ -4,9 +4,6 @@ services:
       build: 
          dockerfile: Dockerfile
          context: .
-      expose:
-        - 8080
-        - 8081
       ports:
-        - "8080:8080"
-        - "8081:8081"
+        - 8080:8080
+        - 8081:8081

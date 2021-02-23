@@ -14,6 +14,12 @@ public class DropwizardexamplesConfiguration extends Configuration {
   private String defaultName = "Stranger";
   
   private Integer defaultNum = 1;
+  
+  @JsonProperty("metrics_enabled")
+  private Boolean metricsEnabled = true;
+  public Boolean metricsEnabled() {
+      return metricsEnabled;
+  }
 
   @JsonProperty
   public String getTemplate() {

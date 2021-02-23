@@ -5,3 +5,4 @@ logging:
 template: Hello, %s!
 defaultName: dwz
 defaultNum: 1
+metrics_enabled: true
